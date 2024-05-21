@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ryor8sexabyv"]
+
+[ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
+[ext_resource type="Script" path="res://tutorial.gd" id="2_sb3vf"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GDExample" type="GDExample" parent="."]
+amplitude = 66.995
+position = Vector2(60.6554, 133.821)
+texture = ExtResource("1_j8afg")
+centered = false
+script = ExtResource("2_sb3vf")
+
+[connection signal="position_changed" from="GDExample" to="GDExample" method="_on_position_changed"]
