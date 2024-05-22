@@ -1,5 +1,6 @@
 extends Node
 
 
-func _on_position_changed(node, new_pos):
-	print("The position of " + node.get_class() + " is now " + str(new_pos))
+func _input(event):
+ if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+   print("You clicked on Sprite!")
