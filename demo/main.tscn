@@ -1,14 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://ryor8sexabyv"]
+[gd_scene load_steps=6 format=3 uid="uid://ryor8sexabyv"]
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v83p7"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjt1p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hw5jb"]
+bounce = 0.5
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(395, 115)
-texture = ExtResource("1_j8afg")
-centered = false
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(296, 508)
 
-[node name="MoveByClick" type="MoveByClick" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_dohu7")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_j8afg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(297, 201)
+physics_material_override = SubResource("PhysicsMaterial_v83p7")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_j8afg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_sjt1p")
+
+[node name="Dish" type="Dish" parent="."]
+position = Vector2(297, 358)
+physics_material_override = SubResource("PhysicsMaterial_hw5jb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dish"]
 texture = ExtResource("1_j8afg")
