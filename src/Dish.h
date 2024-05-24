@@ -11,6 +11,8 @@ namespace godot {
 class InputEvent;
 class CollisionShape2D;
 class PhysicsDirectBodyState2D;
+class Sprite2D;
+class RectangleShape2D;
 
 class Dish : public RigidBody2D {
 	GDCLASS(Dish, RigidBody2D)
@@ -28,8 +30,18 @@ public:
 
     void _input(Ref<InputEvent> event);
 
+	Ref<Texture> get_texture() const;
+	void set_texture(const Ref<Texture>& _texture);
+
 private:
 	CollisionShape2D* collision_shape;
+	Ref<RectangleShape2D> rect_shape;
+	Sprite2D* sprite;
+	Ref<Texture> texture;
+
+
+	Vector2 offset;
+	bool dragging;
 };
 
 }

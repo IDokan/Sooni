@@ -2,14 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ampee"]
+size = Vector2(128, 128)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v83p7"]
-bounce = 1.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kn7gm"]
+bounce = 0.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sjt1p"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hw5jb"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6tmd0"]
 bounce = 0.5
 
 [node name="Node2D" type="Node2D"]
@@ -18,24 +19,45 @@ bounce = 0.5
 position = Vector2(296, 508)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_dohu7")
+shape = SubResource("RectangleShape2D_ampee")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_j8afg")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(297, 201)
-physics_material_override = SubResource("PhysicsMaterial_v83p7")
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(574, 661)
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("1_j8afg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+scale = Vector2(57.66, 1)
+shape = SubResource("RectangleShape2D_dohu7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_sjt1p")
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(574, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+scale = Vector2(57.66, 1)
+shape = SubResource("RectangleShape2D_dohu7")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(-13, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+scale = Vector2(1, 38.26)
+shape = SubResource("RectangleShape2D_dohu7")
+
+[node name="WallLeft2" type="StaticBody2D" parent="."]
+position = Vector2(1163, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft2"]
+scale = Vector2(1, 38.26)
+shape = SubResource("RectangleShape2D_dohu7")
 
 [node name="Dish" type="Dish" parent="."]
-position = Vector2(297, 358)
-physics_material_override = SubResource("PhysicsMaterial_hw5jb")
-
-[node name="Sprite2D" type="Sprite2D" parent="Dish"]
 texture = ExtResource("1_j8afg")
+position = Vector2(615, 225)
+physics_material_override = SubResource("PhysicsMaterial_kn7gm")
+
+[node name="Dish2" type="Dish" parent="."]
+texture = ExtResource("1_j8afg")
+position = Vector2(291, 72)
+physics_material_override = SubResource("PhysicsMaterial_6tmd0")
