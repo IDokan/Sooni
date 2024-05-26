@@ -1,8 +1,13 @@
 #include "Dish.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+
+// Physics
+#include <godot_cpp/classes/collision_shape2d.hpp>
 #include <godot_cpp/classes/rectangle_shape2d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+
+// Sprites
 #include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/input_event_mouse_button.hpp>
@@ -21,6 +26,7 @@ Dish::Dish()
     : sprite(memnew(Sprite2D)), rect_shape(memnew(RectangleShape2D))
 {
     collision_shape = memnew(CollisionShape2D);
+    
 }
 
 Dish::~Dish() {

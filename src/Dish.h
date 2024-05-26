@@ -2,9 +2,8 @@
 #define DISH_H
 
 #include <godot_cpp/classes/rigid_body2d.hpp>
-#include <godot_cpp/classes/collision_shape2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 
 namespace godot {
 

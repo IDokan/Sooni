@@ -2,6 +2,7 @@
 
 #include "gdexample.h"
 #include "Dish.h"
+#include "Tray.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -16,6 +17,7 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 
 	ClassDB::register_class<GDExample>();
 	ClassDB::register_class<Dish>();
+	ClassDB::register_class<Tray>();
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {
