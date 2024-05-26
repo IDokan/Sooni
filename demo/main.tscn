@@ -1,28 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ryor8sexabyv"]
+[gd_scene load_steps=7 format=3 uid="uid://ryor8sexabyv"]
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ampee"]
-size = Vector2(128, 128)
+[ext_resource type="Script" path="res://Area2D.gd" id="2_0lcfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nyggv"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5b6ik"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0qok7"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j68d5"]
 bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isr28"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(296, 508)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_ampee")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_j8afg")
 
 [node name="WallBottom" type="StaticBody2D" parent="."]
 position = Vector2(574, 661)
@@ -55,13 +46,26 @@ shape = SubResource("RectangleShape2D_dohu7")
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(615, 225)
-physics_material_override = SubResource("PhysicsMaterial_nyggv")
+physics_material_override = SubResource("PhysicsMaterial_5b6ik")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(291, 72)
-physics_material_override = SubResource("PhysicsMaterial_0qok7")
+physics_material_override = SubResource("PhysicsMaterial_j68d5")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
-position = Vector2(615, 472)
+position = Vector2(465, 540)
+
+[node name="Area2D" type="Area2D" parent="Tray"]
+script = ExtResource("2_0lcfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tray/Area2D"]
+position = Vector2(0, -126.15)
+scale = Vector2(6.43, 18.935)
+shape = SubResource("RectangleShape2D_isr28")
+
+[connection signal="area_entered" from="Tray/Area2D" to="Tray/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Tray/Area2D" to="Tray/Area2D" method="_on_area_exited"]
+[connection signal="body_entered" from="Tray/Area2D" to="Tray/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Tray/Area2D" to="Tray/Area2D" method="_on_body_exited"]
