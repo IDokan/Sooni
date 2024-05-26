@@ -9,6 +9,7 @@ namespace godot {
 class Sprite2D;
 class RectangleShape2D;
 class CollisionShape2D;
+class Area2D;
 
 class Tray : public StaticBody2D {
 	GDCLASS(Tray, StaticBody2D)
@@ -27,10 +28,19 @@ public:
 	void set_texture(const Ref<Texture>& _texture);
 
 private:
-	CollisionShape2D* collision_shape;
-	Ref<RectangleShape2D> rect_shape;
+	CollisionShape2D* body_collision;
+	Ref<RectangleShape2D> body_collision_shape;
 	Sprite2D* sprite;
 	Ref<Texture> texture;
+
+	Area2D* area;
+	CollisionShape2D* area_collision;
+	Ref<RectangleShape2D> area_collision_shape;
+
+private:
+	// It could be better using screen vertical size. 
+	// Ex) (screen_size.y / a) - b
+	static constexpr int TRAY_VERTICAL_DETECT_RANGE = 30;
 };
 
 }
