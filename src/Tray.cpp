@@ -1,10 +1,12 @@
 #include "Tray.h"
 
 #include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/collision_shape2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/sprite2d.hpp>
+#include <godot_cpp/classes/texture_button.hpp>
 
 using namespace godot;
 
@@ -13,6 +15,8 @@ void godot::Tray::_bind_methods()
     ClassDB::bind_method(D_METHOD("set_texture", "_texture"), &Tray::set_texture);
     ClassDB::bind_method(D_METHOD("get_texture"), &Tray::get_texture);
     ClassDB::add_property("Tray", PropertyInfo(Variant::OBJECT, "texture", PROPERTY_HINT_RESOURCE_TYPE, "Texture2D"), "set_texture", "get_texture");    
+
+    ClassDB::bind_method(D_METHOD("rearrange"), &Tray::rearrange);
 }
 
 godot::Tray::Tray()
@@ -20,7 +24,7 @@ godot::Tray::Tray()
         sprite(memnew(Sprite2D)),
         area(memnew(Area2D)), area_collision(memnew(CollisionShape2D)), area_collision_shape(memnew(RectangleShape2D))
 {
-    
+
 }
 
 godot::Tray::~Tray()
@@ -51,10 +55,21 @@ void godot::Tray::_ready()
     area_collision->set_owner(area);
     add_child(area);
     area->set_owner(this);
+
+    TextureButton* rearrange_button = Object::cast_to<TextureButton>(get_node<TextureButton>(NodePath("%TextureButton")));
+    if(rearrange_button != nullptr)
+    {
+        rearrange_button->connect("pressed", callable_mp(this, &Tray::rearrange));
+    }
+    else
+    {
+        UtilityFunctions::print("Connect to a rearrange button has failed!");
+    }
 }
 
 void godot::Tray::_process(double delta)
 {
+
 }
 
 Ref<Texture> godot::Tray::get_texture() const
@@ -70,4 +85,18 @@ void godot::Tray::set_texture(const Ref<Texture> &_texture)
     Vector2 sprite_size = sprite->get_rect().size;
     body_collision_shape->set_size(sprite_size);
     area_collision_shape->set_size(Vector2(sprite_size.x, sprite_size.y * TRAY_VERTICAL_DETECT_RANGE));
+}
+
+void godot::Tray::rearrange()
+{
+    UtilityFunctions::print("Successfully connected to the rearrange button!");
+
+    // Print name of detected bodies.
+    TypedArray<Node2D> overlapping_bodies = area->get_overlapping_bodies();
+        
+    for (size_t i = 0; i < overlapping_bodies.size(); i++)
+    {
+        Node2D* body = Object::cast_to<Node2D>(overlapping_bodies[i]);
+        UtilityFunctions::print(body->get_name());
+    }
 }

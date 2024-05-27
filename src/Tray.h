@@ -27,6 +27,8 @@ public:
 	Ref<Texture> get_texture() const;
 	void set_texture(const Ref<Texture>& _texture);
 
+	void rearrange();
+
 private:
 	CollisionShape2D* body_collision;
 	Ref<RectangleShape2D> body_collision_shape;
