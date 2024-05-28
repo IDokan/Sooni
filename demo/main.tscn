@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ryor8sexabyv"]
+[gd_scene load_steps=6 format=3 uid="uid://ryor8sexabyv"]
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s3x7j"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k67cb"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xn2q0"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c7fge"]
 bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
+size = Vector2(325, 157)
 
 [node name="Node2D" type="Node2D"]
 
@@ -42,17 +45,17 @@ shape = SubResource("RectangleShape2D_dohu7")
 
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
-position = Vector2(615, 225)
-physics_material_override = SubResource("PhysicsMaterial_s3x7j")
+position = Vector2(1011, 546)
+physics_material_override = SubResource("PhysicsMaterial_k67cb")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
-position = Vector2(291, 72)
-physics_material_override = SubResource("PhysicsMaterial_xn2q0")
+position = Vector2(865, 566)
+physics_material_override = SubResource("PhysicsMaterial_c7fge")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
-position = Vector2(465, 540)
+position = Vector2(578, 540)
 
 [node name="TextureButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
@@ -65,3 +68,11 @@ texture_pressed = ExtResource("1_j8afg")
 texture_hover = ExtResource("1_j8afg")
 texture_disabled = ExtResource("1_j8afg")
 texture_focused = ExtResource("1_j8afg")
+
+[node name="DiningTable" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(113, 325)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiningTable"]
+position = Vector2(74, 62)
+shape = SubResource("RectangleShape2D_5ugot")

@@ -32,12 +32,13 @@ public:
 	Ref<Texture> get_texture() const;
 	void set_texture(const Ref<Texture>& _texture);
 
+	void set_rearrange_destination(Vector2 destination);
+
 private:
 	CollisionShape2D* collision_shape;
 	Ref<RectangleShape2D> rect_shape;
 	Sprite2D* sprite;
 	Ref<Texture> texture;
-
 
 	Vector2 offset;
 	bool dragging;

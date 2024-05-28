@@ -1,6 +1,8 @@
 #include "Dish.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 
 // Physics
 #include <godot_cpp/classes/collision_shape2d.hpp>
@@ -78,6 +80,7 @@ void godot::Dish::_integrate_forces(PhysicsDirectBodyState2D *state)
             transform.set_origin(get_global_mouse_position() + offset);
             state->set_transform(transform);
     }
+    
 }
 
 void Dish::_input(Ref<InputEvent> event)
@@ -117,4 +120,14 @@ void godot::Dish::set_texture(const Ref<Texture> &_texture)
     sprite->set_texture(texture);
     
     rect_shape->set_size(sprite->get_rect().size);
+}
+
+void godot::Dish::set_rearrange_destination(Vector2 destination)
+{
+    // @@ TODO: need to get valid destination. Current destination is (0, 0)
+    UtilityFunctions::print(destination);
+
+    Ref<Tween> t = create_tween();
+    t->tween_property(this, "global_position",destination, 2.0);
+    t->play();
 }

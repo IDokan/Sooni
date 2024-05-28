@@ -7,6 +7,7 @@
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
+#include <Dish.h>
 
 using namespace godot;
 
@@ -44,7 +45,6 @@ void godot::Tray::_ready()
     body_collision->set_shape(body_collision_shape);
     add_child(body_collision);
     body_collision->set_owner(this);
-
 
     // Hierarchy: Body -> area -> area collision -> area collision rectangle shape
     area_collision_shape->set_size(Vector2(sprite_size.x, sprite_size.y * TRAY_VERTICAL_DETECT_RANGE));
@@ -94,9 +94,28 @@ void godot::Tray::rearrange()
     // Print name of detected bodies.
     TypedArray<Node2D> overlapping_bodies = area->get_overlapping_bodies();
         
-    for (size_t i = 0; i < overlapping_bodies.size(); i++)
+        
+    Area2D* table_area = Object::cast_to<Area2D>(get_node<Area2D>(NodePath("%DiningTable")));
+    CollisionShape2D* table_area_shape = Object::cast_to<CollisionShape2D>(table_area->get_child(0));
+    if(table_area_shape == nullptr)
     {
-        Node2D* body = Object::cast_to<Node2D>(overlapping_bodies[i]);
-        UtilityFunctions::print(body->get_name());
+        UtilityFunctions::print("table_area_shape is nullptr!");
+        return;
     }
+    
+    const int body_size = overlapping_bodies.size();
+
+    // Need to be improved.
+    for (size_t i = 0; i < body_size; i++)
+    {
+        Rect2 table_rect = table_area_shape->get_shape()->get_rect();
+        
+        Dish* dish = Object::cast_to<Dish>(overlapping_bodies[i]);
+        if(dish != nullptr)
+        {
+            dish->set_rearrange_destination(table_rect.get_center());
+        }
+    }
+
+    
 }
