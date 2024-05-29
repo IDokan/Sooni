@@ -8,6 +8,7 @@
 #include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
 #include <Dish.h>
+#include <rectangles_mapper.h>
 
 using namespace godot;
 
@@ -94,8 +95,13 @@ void godot::Tray::rearrange()
     // Print name of detected bodies.
     TypedArray<Node2D> overlapping_bodies = area->get_overlapping_bodies();
         
-        
     Area2D* table_area = Object::cast_to<Area2D>(get_node<Area2D>(NodePath("%DiningTable")));
+    if(table_area == nullptr)
+    {
+        UtilityFunctions::print("Failed to find Table area.");
+        return;
+    }
+
     CollisionShape2D* table_area_shape = Object::cast_to<CollisionShape2D>(table_area->get_child(0));
     if(table_area_shape == nullptr)
     {
@@ -103,19 +109,16 @@ void godot::Tray::rearrange()
         return;
     }
     
+    const Rect2 table_rect = table_area_shape->get_shape()->get_rect();
     const int body_size = overlapping_bodies.size();
 
     // Need to be improved.
     for (size_t i = 0; i < body_size; i++)
     {
-        Rect2 table_rect = table_area_shape->get_shape()->get_rect();
-        
         Dish* dish = Object::cast_to<Dish>(overlapping_bodies[i]);
         if(dish != nullptr)
         {
-            dish->set_rearrange_destination(table_rect.get_center());
+            dish->set_rearrange_destination(table_area_shape->to_global(table_rect.get_center()));
         }
     }
-
-    
 }

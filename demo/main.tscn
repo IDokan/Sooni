@@ -4,10 +4,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k67cb"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kt0it"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c7fge"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ve4cw"]
 bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
@@ -46,12 +46,12 @@ shape = SubResource("RectangleShape2D_dohu7")
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_k67cb")
+physics_material_override = SubResource("PhysicsMaterial_kt0it")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_c7fge")
+physics_material_override = SubResource("PhysicsMaterial_ve4cw")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
@@ -74,5 +74,5 @@ unique_name_in_owner = true
 position = Vector2(113, 325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DiningTable"]
-position = Vector2(74, 62)
+position = Vector2(74, 61)
 shape = SubResource("RectangleShape2D_5ugot")
