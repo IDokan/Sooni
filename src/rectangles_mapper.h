@@ -14,7 +14,7 @@ public:
 	~RectanglesMapper();
 
     // Given array should be sorted from larger to smaller.
-    void process(std::vector<Rect2> rectangles_will_packed);
+    bool process(std::vector<Rect2> rectangles_will_packed);
 
 private:
     struct Rectangle
@@ -25,8 +25,11 @@ private:
         bool occupied;
     };
 
-    void step(Rect2 rect);
-    bool find_left_most_highest_available_cell(size_t &x, size_t &y) const;
+    // return false if adding a target rect is not available. 
+    bool step(Rect2 rect);
+    bool find_left_most_highest_available_cell(size_t &x, size_t &y, Rect2 rect) const;
+    bool is_available(size_t x, size_t y, Rect2 rect) const;
+    void add_rectangle(size_t x, size_t y, Rect2 rect);
 
     real_t area;
 
