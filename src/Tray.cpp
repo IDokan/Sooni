@@ -1,5 +1,6 @@
 #include "Tray.h"
 
+#include <algorithm>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
@@ -57,6 +58,7 @@ void godot::Tray::_ready()
     add_child(area);
     area->set_owner(this);
 
+    // Connect a member function to a signal
     TextureButton* rearrange_button = Object::cast_to<TextureButton>(get_node<TextureButton>(NodePath("%TextureButton")));
     if(rearrange_button != nullptr)
     {
@@ -90,8 +92,6 @@ void godot::Tray::set_texture(const Ref<Texture> &_texture)
 
 void godot::Tray::rearrange()
 {
-    UtilityFunctions::print("Successfully connected to the rearrange button!");
-
     // Print name of detected bodies.
     TypedArray<Node2D> overlapping_bodies = area->get_overlapping_bodies();
         
@@ -112,13 +112,35 @@ void godot::Tray::rearrange()
     const Rect2 table_rect = table_area_shape->get_shape()->get_rect();
     const int body_size = overlapping_bodies.size();
 
-    // Need to be improved.
+    std::vector<Dish*> dishes;
     for (size_t i = 0; i < body_size; i++)
     {
         Dish* dish = Object::cast_to<Dish>(overlapping_bodies[i]);
         if(dish != nullptr)
         {
-            dish->set_rearrange_destination(table_area_shape->to_global(table_rect.get_center()));
+            dishes.push_back(dish);
         }
     }
+
+    std::sort(dishes.begin(), dishes.end(), [](Dish *lhs, Dish *rhs)
+    {
+        return lhs->get_sprite_rect().size.y >= rhs->get_sprite_rect().size.y;
+    }
+    );
+
+    std::vector<Rect2> dish_rectangles;
+    for (size_t i = 0; i < dishes.size(); i++)
+    {
+        dish_rectangles.push_back(dishes[i]->get_sprite_rect());
+    }
+    
+    // @@ TODO: Need to handle if mapper failed packing.
+    RectanglesMapper mapper(table_rect.size);
+    mapper.process(dish_rectangles);
+    std::vector<Vector2> positions = mapper.get_positions();
+    for (size_t i = 0; i < dishes.size(); i++)
+    {
+        dishes[i]->set_rearrange_destination(table_area->to_global(positions[i] + (dishes[i]->get_sprite_rect().get_size() / 2)));
+    }
+    
 }

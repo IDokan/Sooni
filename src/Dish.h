@@ -34,6 +34,8 @@ public:
 
 	void set_rearrange_destination(Vector2 destination);
 
+	Rect2 get_sprite_rect() const;
+
 private:
 	CollisionShape2D* collision_shape;
 	Ref<RectangleShape2D> rect_shape;

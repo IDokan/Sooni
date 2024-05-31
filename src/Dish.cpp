@@ -131,3 +131,8 @@ void godot::Dish::set_rearrange_destination(Vector2 destination)
     t->tween_property(this, "global_position",destination, 2.0);
     t->play();
 }
+
+Rect2 godot::Dish::get_sprite_rect() const
+{
+    return sprite->get_rect();
+}

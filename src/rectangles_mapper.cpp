@@ -1,5 +1,4 @@
 #include <rectangles_mapper.h>
-#include <godot_cpp/variant/rect2.hpp>
 
 using namespace godot;
 
@@ -28,12 +27,18 @@ bool godot::RectanglesMapper::process(std::vector<Rect2> rectangles_will_packed)
     return true;
 }
 
+std::vector<Vector2> godot::RectanglesMapper::get_positions() const
+{
+    return positions;
+}
+
 bool godot::RectanglesMapper::step(Rect2 rect)
 {
     size_t x = 0;
     size_t y = 0;
     if(find_left_most_highest_available_cell(x, y, rect))
     {
+        save_position(x, y);
         add_rectangle(x, y, rect);
         return true;
     }
@@ -64,6 +69,23 @@ bool godot::RectanglesMapper::find_left_most_highest_available_cell(size_t &x, s
     return false;
 }
 
+void godot::RectanglesMapper::save_position(size_t x, size_t y)
+{
+    real_t sum_x = 0;
+    real_t sum_y = 0;
+    for (size_t i = 0; i < x; i++)
+    {
+        sum_x += rectangles[0][i].size.x;
+    }
+
+    for (size_t i = 0; i < y; i++)
+    {
+        sum_y += rectangles[i][0].size.y;
+    }
+    
+    positions.push_back(Vector2(sum_x, sum_y));
+}
+
 // It check neighbor cells but do not tell us that we will use neighbors or not.
 bool godot::RectanglesMapper::is_available(size_t x, size_t y, Rect2 rect) const
 {
@@ -84,11 +106,11 @@ bool godot::RectanglesMapper::is_available(size_t x, size_t y, Rect2 rect) const
 
     // If no space, try merging with neighbor rectangles.
     // Horizontal merge,
-    real_t sum_x = 0;
-    if (rectangles[y][x].size.x < rect_size.x)
+    real_t sum_x = rectangles[y][x].size.x;
+    if (sum_x < rect_size.x)
     {
 
-        for (size_t i = x; i < rectangles[0].size(); i++)
+        for (size_t i = x + 1; i < rectangles[0].size(); i++)
         {
             if (rectangles[y][i].occupied == true)
             {
@@ -108,10 +130,10 @@ bool godot::RectanglesMapper::is_available(size_t x, size_t y, Rect2 rect) const
     
     
     // Vertical merge,
-    real_t sum_y = 0;
-    if (rectangles[y][x].size.y < rect_size.y)
+    real_t sum_y = rectangles[y][x].size.y;
+    if (sum_y < rect_size.y)
     {
-        for (size_t i = y; i < rectangles.size(); i++)
+        for (size_t i = y + 1; i < rectangles.size(); i++)
         {
             if (rectangles[i][x].occupied == true)
             {
@@ -128,7 +150,6 @@ bool godot::RectanglesMapper::is_available(size_t x, size_t y, Rect2 rect) const
         }
     }
 
-    // @@ TODO : Could it be error-prone? Got to check here if bug happened.
     return sum_x >= rect_size.x && sum_y >= rect_size.y;
 }
 

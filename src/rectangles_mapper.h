@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <godot_cpp/variant/vector2.hpp>
+#include <godot_cpp/variant/rect2.hpp>
 
 namespace godot {
 
@@ -15,6 +16,7 @@ public:
 
     // Given array should be sorted from larger to smaller.
     bool process(std::vector<Rect2> rectangles_will_packed);
+    std::vector<Vector2> get_positions() const;
 
 private:
     struct Rectangle
@@ -28,6 +30,7 @@ private:
     // return false if adding a target rect is not available. 
     bool step(Rect2 rect);
     bool find_left_most_highest_available_cell(size_t &x, size_t &y, Rect2 rect) const;
+    void save_position(size_t x, size_t y);
     bool is_available(size_t x, size_t y, Rect2 rect) const;
     void add_rectangle(size_t x, size_t y, Rect2 rect);
 
@@ -35,6 +38,7 @@ private:
 
     // 2-dimensional array -> helper container to calculate how to pack rectangles.
     std::vector<std::vector<Rectangle>> rectangles;
+    std::vector<Vector2> positions;
 };
 
 }
