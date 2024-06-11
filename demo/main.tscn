@@ -5,10 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_23o41"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oavwm"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d1ls8"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cuipx"]
 bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
@@ -49,12 +49,12 @@ shape = SubResource("RectangleShape2D_dohu7")
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_23o41")
+physics_material_override = SubResource("PhysicsMaterial_oavwm")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_d1ls8")
+physics_material_override = SubResource("PhysicsMaterial_cuipx")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
@@ -63,9 +63,9 @@ scale = Vector2(2.6, 1)
 
 [node name="TextureButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
-offset_left = 979.0
+offset_left = 754.0
 offset_top = 37.0
-offset_right = 1107.0
+offset_right = 882.0
 offset_bottom = 165.0
 texture_normal = ExtResource("1_j8afg")
 texture_pressed = ExtResource("1_j8afg")
@@ -88,15 +88,185 @@ script = ExtResource("2_e5438")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_dyvnc")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = 36.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_j8afg")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="ItemBg" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg2" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg2"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg3" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg3"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg4" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg4"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg5" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg5"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg6" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg6"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg7" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg7"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg8" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg8"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg9" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg9"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg10" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg10"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg11" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg11"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+
+[node name="ItemBg12" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_j8afg")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg12"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
