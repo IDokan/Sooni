@@ -17,4 +17,4 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-global="*res://global.gd"
+DishFactory="*res://DishFactory.gd"
