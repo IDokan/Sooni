@@ -70,6 +70,8 @@ void Dish::_process(double delta)
     //         collision_shape->set_position(get_global_mouse_position());
     //     }
     // }
+
+    
 }
 
 void godot::Dish::_integrate_forces(PhysicsDirectBodyState2D *state)

@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://ryor8sexabyv"]
+[gd_scene load_steps=10 format=3 uid="uid://ryor8sexabyv"]
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
 [ext_resource type="Script" path="res://platform.gd" id="2_e5438"]
+[ext_resource type="Texture2D" uid="uid://boufkd127m477" path="res://InventoryBg.png" id="3_t6wf1"]
+[ext_resource type="Script" path="res://ItemBg.gd" id="3_xa2a1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oavwm"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyy2p"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cuipx"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y8ej8"]
 bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
@@ -49,12 +51,12 @@ shape = SubResource("RectangleShape2D_dohu7")
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_oavwm")
+physics_material_override = SubResource("PhysicsMaterial_yyy2p")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_cuipx")
+physics_material_override = SubResource("PhysicsMaterial_y8ej8")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
@@ -129,144 +131,84 @@ columns = 2
 
 [node name="ItemBg" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg2" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg2"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg2"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg3" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg3"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg3"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg4" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg4"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg4"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg5" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg5"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg5"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg6" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg6"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg6"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_j8afg")
+script = ExtResource("3_xa2a1")
 
 [node name="ItemBg7" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
+texture = ExtResource("3_t6wf1")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg7"]
-show_behind_parent = true
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg7"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-
-[node name="ItemBg8" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-mouse_filter = 2
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg8"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-
-[node name="ItemBg9" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg9"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-
-[node name="ItemBg10" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg10"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-
-[node name="ItemBg11" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg11"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
-
-[node name="ItemBg12" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("1_j8afg")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg12"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+script = ExtResource("3_xa2a1")
