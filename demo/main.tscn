@@ -6,10 +6,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lhcrl"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t65wp"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hi0py"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lh8dx"]
 bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
@@ -48,12 +48,12 @@ shape = SubResource("RectangleShape2D_dohu7")
 [node name="Dish" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_lhcrl")
+physics_material_override = SubResource("PhysicsMaterial_t65wp")
 
 [node name="Dish2" type="Dish" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_hi0py")
+physics_material_override = SubResource("PhysicsMaterial_lh8dx")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
@@ -113,17 +113,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer"]
+[node name="Inventory" type="GridContainer" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="ItemBg" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
@@ -131,11 +132,22 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="ItemBg2" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg2" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_xa2a1")
+
+[node name="ItemBg3" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
+layout_mode = 2
+texture = ExtResource("3_t6wf1")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg3"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
@@ -143,11 +155,11 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="ItemBg3" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg4" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg3"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg4"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
@@ -155,11 +167,11 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="ItemBg4" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg5" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg4"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg5"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
@@ -167,11 +179,11 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="ItemBg5" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg6" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg5"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg6"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
@@ -179,23 +191,11 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="ItemBg6" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
+[node name="ItemBg7" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg6"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_j8afg")
-script = ExtResource("3_xa2a1")
-
-[node name="ItemBg7" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/GridContainer/ItemBg7"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg7"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0

@@ -37,6 +37,10 @@ public:
 	Rect2 get_sprite_rect() const;
 
 private:
+	int32_t get_item_slot_index_on(Vector2 mouse_position);
+	void store_to_inventory(int32_t inventory_slot_index);
+
+private:
 	CollisionShape2D* collision_shape;
 	Ref<RectangleShape2D> rect_shape;
 	Sprite2D* sprite;

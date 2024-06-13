@@ -14,6 +14,12 @@
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/classes/input_event_mouse_button.hpp>
 
+// Another classes
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/grid_container.hpp>
+#include <godot_cpp/classes/texture_rect.hpp>
+
 using namespace godot;
 
 void Dish::_bind_methods() {
@@ -59,19 +65,7 @@ void godot::Dish::_ready()
 
 void Dish::_process(double delta)
 {
-    (delta);
-
-    // Input* inputEvent = Input::get_singleton();
-    // if(inputEvent->is_mouse_button_pressed(MOUSE_BUTTON_LEFT))
-    // {
-    //     // if(get_rect().has_point(to_local(get_global_mouse_position())))
-    //     {
-    //         set_position(get_global_mouse_position());
-    //         collision_shape->set_position(get_global_mouse_position());
-    //     }
-    // }
-
-    
+    (delta);  
 }
 
 void godot::Dish::_integrate_forces(PhysicsDirectBodyState2D *state)
@@ -107,6 +101,8 @@ void Dish::_input(Ref<InputEvent> event)
         {
             dragging = false;
             set_linear_velocity(Vector2(0.0, 0.0));
+
+            store_to_inventory(get_item_slot_index_on(mouseEvent->get_global_position()));
         }
     }
 }
@@ -126,9 +122,6 @@ void godot::Dish::set_texture(const Ref<Texture> &_texture)
 
 void godot::Dish::set_rearrange_destination(Vector2 destination)
 {
-    // @@ TODO: need to get valid destination. Current destination is (0, 0)
-    UtilityFunctions::print(destination);
-
     Ref<Tween> t = create_tween();
     t->tween_property(this, "global_position",destination, 2.0);
     t->play();
@@ -137,4 +130,52 @@ void godot::Dish::set_rearrange_destination(Vector2 destination)
 Rect2 godot::Dish::get_sprite_rect() const
 {
     return sprite->get_rect();
+}
+
+int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
+{
+    // @@ TODO: Could be better approach to find the inventory pointer
+    GridContainer* inventory = get_tree()->get_root()->get_node<GridContainer>(NodePath("Node2D/CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"));
+    if (inventory == nullptr)
+    {
+        return -1;
+    }
+
+    int32_t child_count = inventory->get_child_count();
+    for(int32_t i = 0; i < child_count; ++i)
+    {
+        // The below line should be change if inventory structure has changed.
+        TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(i)->get_child(0));
+        if(slot != nullptr)
+        {
+            if(slot->get_global_rect().has_point(mouse_position))
+            {
+                return i;
+            }
+        }
+    }
+
+    return -1;
+}
+
+void godot::Dish::store_to_inventory(int32_t inventory_slot_index)
+{
+    if(inventory_slot_index < 0)
+    {
+        return;
+    }
+
+    // @@ TODO: Could be better approach to find the inventory pointer
+    GridContainer* inventory = get_tree()->get_root()->get_node<GridContainer>(NodePath("Node2D/CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"));
+    if(inventory == nullptr)
+    {
+        return;
+    }
+
+    TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(inventory_slot_index)->get_child(0));
+
+    // @@ TODO: Change how to send dish data.
+    slot->set_texture(texture);
+
+    queue_free();
 }
