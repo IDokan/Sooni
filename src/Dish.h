@@ -38,7 +38,7 @@ public:
 
 private:
 	int32_t get_item_slot_index_on(Vector2 mouse_position);
-	void store_to_inventory(int32_t inventory_slot_index);
+	void store_to_inventory(Vector2 mouse_position, int32_t inventory_slot_index);
 
 private:
 	CollisionShape2D* collision_shape;

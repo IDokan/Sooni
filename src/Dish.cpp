@@ -19,6 +19,7 @@
 #include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/grid_container.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
+#include <DishContainers.h>
 
 using namespace godot;
 
@@ -102,7 +103,8 @@ void Dish::_input(Ref<InputEvent> event)
             dragging = false;
             set_linear_velocity(Vector2(0.0, 0.0));
 
-            store_to_inventory(get_item_slot_index_on(mouseEvent->get_global_position()));
+            Vector2 mouse_position = mouseEvent->get_global_position();
+            store_to_inventory(mouse_position, get_item_slot_index_on(mouse_position));
         }
     }
 }
@@ -158,7 +160,7 @@ int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
     return -1;
 }
 
-void godot::Dish::store_to_inventory(int32_t inventory_slot_index)
+void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_slot_index)
 {
     if(inventory_slot_index < 0)
     {
@@ -173,6 +175,13 @@ void godot::Dish::store_to_inventory(int32_t inventory_slot_index)
     }
 
     TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(inventory_slot_index)->get_child(0));
+
+    // swap dish within inventory if the slot is not empty
+    if(slot->get_texture() != nullptr)
+    {
+        // spawn a dish by an information of the slot
+        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(mouse_position, slot->get_texture());
+    }
 
     // @@ TODO: Change how to send dish data.
     slot->set_texture(texture);
