@@ -36,6 +36,8 @@ public:
 
 	Rect2 get_sprite_rect() const;
 
+	bool is_dragging() const;
+
 private:
 	int32_t get_item_slot_index_on(Vector2 mouse_position);
 	void store_to_inventory(Vector2 mouse_position, int32_t inventory_slot_index);

@@ -134,6 +134,11 @@ Rect2 godot::Dish::get_sprite_rect() const
     return sprite->get_rect();
 }
 
+bool godot::Dish::is_dragging() const
+{
+    return dragging;
+}
+
 int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
 {
     // @@ TODO: Could be better approach to find the inventory pointer
@@ -180,7 +185,8 @@ void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_s
     if(slot->get_texture() != nullptr)
     {
         // spawn a dish by an information of the slot
-        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(mouse_position, slot->get_texture());
+        Vector2 spawn_position = Vector2(get_global_position().x - (sprite->get_rect().get_size().x / 2) - (slot->get_rect().get_size().x / 2), get_global_position().y);
+        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(spawn_position, slot->get_texture());
     }
 
     // @@ TODO: Change how to send dish data.
