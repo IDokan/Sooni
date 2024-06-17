@@ -6,14 +6,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nv3kv"]
-bounce = 0.5
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1nrod"]
-bounce = 0.5
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
 size = Vector2(325, 600)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wtj6m"]
+bounce = 0.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_85guk"]
+bounce = 0.5
 
 [node name="Node2D" type="Node2D"]
 
@@ -168,17 +168,6 @@ offset_bottom = 40.0
 texture = ExtResource("1_j8afg")
 script = ExtResource("3_xa2a1")
 
-[node name="Dish2" type="Dish" parent="."]
-texture = ExtResource("1_j8afg")
-z_as_relative = false
-position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_nv3kv")
-
-[node name="Dish" type="Dish" parent="."]
-texture = ExtResource("1_j8afg")
-position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_1nrod")
-
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(578, 540)
@@ -205,3 +194,14 @@ position = Vector2(162, 303)
 shape = SubResource("RectangleShape2D_5ugot")
 
 [node name="DishContainers" type="DishContainers" parent="."]
+
+[node name="Dish" type="Dish" parent="DishContainers"]
+texture = ExtResource("1_j8afg")
+position = Vector2(1011, 546)
+physics_material_override = SubResource("PhysicsMaterial_wtj6m")
+
+[node name="Dish2" type="Dish" parent="DishContainers"]
+texture = ExtResource("1_j8afg")
+z_as_relative = false
+position = Vector2(865, 566)
+physics_material_override = SubResource("PhysicsMaterial_85guk")

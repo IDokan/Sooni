@@ -2,10 +2,14 @@ extends TextureRect
 
 func _get_drag_data(_at_position):
 	
+	var dish_containers = get_node("/root/Node2D/DishContainers")
+	if dish_containers.is_any_dish_dragging() == true:
+		return null
+	
 	var data = {}
 	data["slot"] = self
 	data["texture"] = texture
-	
+	var offset = get_global_rect().get_center() - get_global_mouse_position()
 	# setup preview texture
 	if texture != null:
 		var drag_texture = TextureRect.new()
@@ -15,10 +19,10 @@ func _get_drag_data(_at_position):
 	
 		var control = Control.new()
 		control.add_child(drag_texture)
-		drag_texture.position = -0.5 * drag_texture.size
+		drag_texture.position = -0.5 * drag_texture.size + offset
 		set_drag_preview(control)
 	
-	get_node("/root/Node2D/DishContainers").prepare_spawner(texture)
+	dish_containers.prepare_spawner(texture, offset)
 	texture = null
 	
 	return data

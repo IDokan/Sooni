@@ -24,13 +24,18 @@ public:
 	void _process(double delta) override;
     void _input(Ref<InputEvent> event);
 
-    void prepare_spawner(Ref<Texture2D> texture);
-    void set_target_slot(TextureRect* target_slot);
-    void spawn_dish(Vector2 position, Ref<Texture2D> tex);
-    void force_spawn_dish(Vector2 position, Ref<Texture2D> tex);    
+    void prepare_spawner(Ref<Texture2D> _texture, Vector2 _offset = Vector2());
+    void set_target_slot(TextureRect* _target_slot);
+    void spawn_dish(Vector2 _position, Ref<Texture2D> _tex);
+    // Does not care drag&drop logics, spawns a dish on the place.
+    // Currently it is used by when swapped with inventory item
+    void force_spawn_dish(Vector2 _position, Ref<Texture2D> _tex);
+
+    bool is_any_dish_dragging() const;
 
 private:
     bool will_spawn;
+    Vector2 offset;
     Ref<Texture2D> texture;
     TextureRect* target_slot;
 };
