@@ -1,3 +1,11 @@
+/******************************************************************************
+Copyright (C)
+File Name:   Dish.cpp
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.24.2024
+	Source file for Dish class.
+******************************************************************************/
 #include "DishContainers.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>

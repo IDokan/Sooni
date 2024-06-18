@@ -1,3 +1,11 @@
+/******************************************************************************
+Copyright (C)
+File Name:   rectangles_mapper.cpp
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.30.2024
+	Source file for a special data container for packing rectangles problem.
+******************************************************************************/
 #include <rectangles_mapper.h>
 
 using namespace godot;

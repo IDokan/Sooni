@@ -1,3 +1,13 @@
+/******************************************************************************
+Copyright (C)
+File Name:   Tray.h
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.26.2024
+	Header file for Tray class.
+	It is a container which dishes wiil served.
+	The dishes on it will delievered to her to satisfy hunger.
+******************************************************************************/
 #ifndef TRAY_H
 #define TRAY_H
 

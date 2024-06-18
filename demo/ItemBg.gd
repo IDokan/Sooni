@@ -28,6 +28,7 @@ func _get_drag_data(_at_position):
 	return data
 	
 func _can_drop_data(_at_position, _data):
+	
 	# Need to add appropriate if condition
 	if _data == null:
 		return false

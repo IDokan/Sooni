@@ -1,3 +1,11 @@
+/******************************************************************************
+Copyright (C)
+File Name:   Tray.cpp
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.26.2024
+	Source file for Tray class.
+******************************************************************************/
 #include "Tray.h"
 
 #include <algorithm>

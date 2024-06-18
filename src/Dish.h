@@ -1,3 +1,13 @@
+/******************************************************************************
+Copyright (C)
+File Name:   Dish.h
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.24.2024
+	Header file for Dish class.
+	It is a food that will be served. 
+	It has nutrients that will be provided.
+******************************************************************************/
 #ifndef DISH_H
 #define DISH_H
 

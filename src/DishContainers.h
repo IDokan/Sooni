@@ -1,3 +1,13 @@
+/******************************************************************************
+Copyright (C)
+File Name:   DishContainers.h
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 06.14.2024
+	Header file for DishContainers(technically) class.
+	In order to manage dishes, I need a class that has information for dishes.
+    It is a parent class of all of existed dish instances.
+******************************************************************************/
 #ifndef DISHCONTAINERS_H
 #define DISHCONTAINERS_H
 

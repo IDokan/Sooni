@@ -4,6 +4,8 @@
 #include "Dish.h"
 #include "Tray.h"
 #include "DishContainers.h"
+#include "Refrigerator.h"
+#include "DishSlot.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -20,6 +22,8 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 	ClassDB::register_class<Dish>();
 	ClassDB::register_class<Tray>();
 	ClassDB::register_class<DishContainers>();
+	ClassDB::register_class<Refrigerator>();
+	ClassDB::register_class<DishSlot>();
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {

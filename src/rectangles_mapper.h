@@ -1,3 +1,13 @@
+/******************************************************************************
+Copyright (C)
+File Name:   rectangles_mapper.h
+Author
+	- sinil.kang	rtd99062@gmail.com
+Creation Date: 05.30.2024
+	Header file for a special data container for packing rectangles problem.
+    Details in the below link
+        https://web.archive.org/web/20170914175015/https://www.codeproject.com/Articles/210979/Fast-optimizing-rectangle-packing-algorithm-for-bu
+******************************************************************************/
 #ifndef RECTANGLES_MAPPER_H
 #define RECTANGLES_MAPPER_H
 
