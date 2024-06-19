@@ -10,10 +10,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
 size = Vector2(325, 600)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sncgp"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gq68q"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pwvue"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xtp1h"]
 bounce = 0.5
 
 [node name="Node2D" type="Node2D"]
@@ -141,6 +141,14 @@ texture = ExtResource("3_t6wf1")
 layout_mode = 2
 texture = ExtResource("3_t6wf1")
 
+[node name="DishSlot4" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
+layout_mode = 2
+texture = ExtResource("3_t6wf1")
+
+[node name="DishSlot5" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
+layout_mode = 2
+texture = ExtResource("3_t6wf1")
+
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
 position = Vector2(578, 540)
@@ -171,12 +179,12 @@ shape = SubResource("RectangleShape2D_5ugot")
 [node name="Dish" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_sncgp")
+physics_material_override = SubResource("PhysicsMaterial_gq68q")
 
 [node name="Dish2" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 z_as_relative = false
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_pwvue")
+physics_material_override = SubResource("PhysicsMaterial_xtp1h")
 
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer" method="_on_texture_button_pressed"]

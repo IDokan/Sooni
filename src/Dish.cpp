@@ -159,8 +159,8 @@ int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
     int32_t child_count = inventory->get_child_count();
     for(int32_t i = 0; i < child_count; ++i)
     {
-        // The below line should be change if inventory structure has changed.
-        TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(i)->get_child(0));
+        // @@TODO: The below line should be change if inventory structure has changed.
+        TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(i));
         if(slot != nullptr)
         {
             if(slot->get_global_rect().has_point(mouse_position))
@@ -177,6 +177,7 @@ void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_s
 {
     if(inventory_slot_index < 0)
     {
+        UtilityFunctions::print("given inventory slot is invalid!");
         return;
     }
 
