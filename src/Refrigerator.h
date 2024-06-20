@@ -12,6 +12,7 @@ Creation Date: 06.18.2024
 #define REFRIGERATOR_H
 
 #include <godot_cpp/classes/canvas_layer.hpp>
+#include <DishSlot.h>
 
 namespace godot {
 
@@ -36,7 +37,14 @@ public:
 	void _process(double delta) override;
 
 private:
-    
+	TextureButton* texture_button;
+
+    NinePatchRect* nine_patch_rect;
+	MarginContainer* margin_container;
+	ScrollContainer* scroll_container;
+	GridContainer* grid_container;
+
+	std::vector<DishSlot*> dish_slots;
 };
 
 }
