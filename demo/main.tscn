@@ -1,19 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://ryor8sexabyv"]
+[gd_scene load_steps=7 format=3 uid="uid://ryor8sexabyv"]
 
 [ext_resource type="Texture2D" uid="uid://h5v60w4x36b3" path="res://icon.svg" id="1_j8afg"]
-[ext_resource type="Script" path="res://InventoryLayer.gd" id="1_p5161"]
 [ext_resource type="Texture2D" uid="uid://boufkd127m477" path="res://InventoryBg.png" id="3_t6wf1"]
-[ext_resource type="Script" path="res://ItemBg.gd" id="3_xa2a1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dohu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
 size = Vector2(325, 600)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gq68q"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4wnfq"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xtp1h"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j0e67"]
 bounce = 0.5
 
 [node name="Node2D" type="Node2D"]
@@ -46,108 +44,10 @@ position = Vector2(1163, 358)
 scale = Vector2(1, 38.26)
 shape = SubResource("RectangleShape2D_dohu7")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("1_p5161")
-
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -426.0
-offset_top = -64.0
-offset_right = -298.0
-offset_bottom = 64.0
-grow_horizontal = 0
-grow_vertical = 2
-texture_normal = ExtResource("1_j8afg")
-texture_pressed = ExtResource("1_j8afg")
-texture_hover = ExtResource("1_j8afg")
-texture_disabled = ExtResource("1_j8afg")
-texture_focused = ExtResource("1_j8afg")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -298.0
-offset_top = -291.0
-offset_bottom = 292.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("1_j8afg")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_top = 9
-theme_override_constants/margin_right = 9
-theme_override_constants/margin_bottom = 9
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/NinePatchRect/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Inventory" type="GridContainer" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 2
-
-[node name="ItemBg" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_j8afg")
-script = ExtResource("3_xa2a1")
-
-[node name="ItemBg2" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory/ItemBg2"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_xa2a1")
-
-[node name="DishSlot" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="DishSlot2" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="DishSlot3" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="DishSlot4" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
-
-[node name="DishSlot5" type="DishSlot" parent="CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"]
-layout_mode = 2
-texture = ExtResource("3_t6wf1")
+[node name="Refrigerator" type="Refrigerator" parent="."]
+refrigerator_background_texture = ExtResource("1_j8afg")
+slot_background_texture = ExtResource("3_t6wf1")
+tween_button_texture = ExtResource("1_j8afg")
 
 [node name="Tray" type="Tray" parent="."]
 texture = ExtResource("1_j8afg")
@@ -179,12 +79,10 @@ shape = SubResource("RectangleShape2D_5ugot")
 [node name="Dish" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_gq68q")
+physics_material_override = SubResource("PhysicsMaterial_4wnfq")
 
 [node name="Dish2" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 z_as_relative = false
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_xtp1h")
-
-[connection signal="pressed" from="CanvasLayer/TextureButton" to="CanvasLayer" method="_on_texture_button_pressed"]
+physics_material_override = SubResource("PhysicsMaterial_j0e67")

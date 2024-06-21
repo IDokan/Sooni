@@ -40,10 +40,9 @@ void Dish::_bind_methods() {
 }
 
 Dish::Dish() 
-    : sprite(memnew(Sprite2D)), rect_shape(memnew(RectangleShape2D))
+    :collision_shape(memnew(CollisionShape2D)), sprite(memnew(Sprite2D)), rect_shape(memnew(RectangleShape2D))
 {
-    collision_shape = memnew(CollisionShape2D);
-    
+       
 }
 
 Dish::~Dish() {

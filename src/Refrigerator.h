@@ -36,6 +36,28 @@ public:
 	void _ready();
 	void _process(double delta) override;
 
+	Ref<Texture> get_refrigerator_background_texture() const;
+	void set_refrigerator_background_texture(const Ref<Texture>& _texture);
+
+	Ref<Texture> get_slot_background_texture() const;
+	void set_slot_background_texture(const Ref<Texture>& _texture);
+
+	Ref<Texture> get_tween_button_texture() const;
+	void set_tween_button_texture(const Ref<Texture>& _texture);
+
+	Vector2 get_size() const;
+	void set_size(const Vector2& _size);
+
+	Vector2 get_position() const;
+	void set_position(const Vector2& _position);
+
+	int32_t get_columns() const;
+	void set_columns(int32_t _columns);
+
+private:
+    void _on_texture_button_pressed();
+	bool slide_flag;
+
 private:
 	TextureButton* texture_button;
 
@@ -45,6 +67,15 @@ private:
 	GridContainer* grid_container;
 
 	std::vector<DishSlot*> dish_slots;
+
+	// Textures
+	Ref<Texture> refrigerator_background_texture;
+	Ref<Texture> slot_background_texture;
+	Ref<Texture> tween_button_texture;
+
+	Vector2 size;
+	Vector2 position;
+	int32_t columns;
 };
 
 }
