@@ -79,6 +79,9 @@ godot::Refrigerator::~Refrigerator()
 
 void godot::Refrigerator::_ready()
 {
+	add_child(texture_button);
+	texture_button->set_owner(this);
+
 	add_child(nine_patch_rect);
 	nine_patch_rect->set_owner(this);
 	nine_patch_rect->set_anchors_preset(Control::LayoutPreset::PRESET_CENTER_RIGHT);
@@ -109,8 +112,7 @@ void godot::Refrigerator::_ready()
 	grid_container->set_h_size_flags(godot::Control::SizeFlags::SIZE_EXPAND_FILL);
 	grid_container->set_v_size_flags(godot::Control::SizeFlags::SIZE_EXPAND_FILL);	
 
-	add_child(texture_button);
-	texture_button->set_owner(this);
+
 	texture_button->set_anchors_preset(Control::LayoutPreset::PRESET_CENTER_RIGHT);
 	texture_button->set_position(position + Vector2(0, size.y / 2) - Vector2(texture_button->get_size().x, texture_button->get_size().y / 2));
     texture_button->connect("pressed", callable_mp(this, &Refrigerator::_on_texture_button_pressed));
@@ -191,6 +193,29 @@ int32_t godot::Refrigerator::get_columns() const
 void godot::Refrigerator::set_columns(int32_t _columns)
 {
 	columns = _columns;
+}
+
+int32_t godot::Refrigerator::get_dish_slots_count() const
+{
+    return dish_slots.size();
+}
+
+const DishSlot *godot::Refrigerator::get_dish_slot(int32_t index) const
+{
+	if(index < 0 || index >= dish_slots.size())
+	{
+		return nullptr;
+	}
+    return dish_slots[index];
+}
+
+DishSlot *godot::Refrigerator::get_dish_slot(int32_t index)
+{
+	if(index < 0 || index >= dish_slots.size())
+	{
+		return nullptr;
+	}
+    return dish_slots[index];
 }
 
 void godot::Refrigerator::_on_texture_button_pressed()

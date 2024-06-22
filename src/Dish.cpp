@@ -25,8 +25,8 @@ Creation Date: 05.24.2024
 // Another classes
 #include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/grid_container.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
+#include <Refrigerator.h>
 #include <DishContainers.h>
 
 using namespace godot;
@@ -148,18 +148,18 @@ bool godot::Dish::is_dragging() const
 
 int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
 {
-    // @@ TODO: Could be better approach to find the inventory pointer
-    GridContainer* inventory = get_tree()->get_root()->get_node<GridContainer>(NodePath("Node2D/CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"));
-    if (inventory == nullptr)
+    // @@ TODO: Could be better approach to find the refrigerator pointer
+    Refrigerator* refrigerator = get_tree()->get_root()->get_node<Refrigerator>(NodePath("Node2D/Refrigerator"));
+    if (refrigerator == nullptr)
     {
         return -1;
     }
 
-    int32_t child_count = inventory->get_child_count();
-    for(int32_t i = 0; i < child_count; ++i)
+    int32_t slots_count = refrigerator->get_dish_slots_count();
+    for(int32_t i = 0; i < slots_count; ++i)
     {
         // @@TODO: The below line should be change if inventory structure has changed.
-        TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(i));
+        DishSlot* slot = refrigerator->get_dish_slot(i);
         if(slot != nullptr)
         {
             if(slot->get_global_rect().has_point(mouse_position))
@@ -181,24 +181,24 @@ void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_s
     }
 
     // @@ TODO: Could be better approach to find the inventory pointer
-    GridContainer* inventory = get_tree()->get_root()->get_node<GridContainer>(NodePath("Node2D/CanvasLayer/NinePatchRect/MarginContainer/ScrollContainer/Inventory"));
-    if(inventory == nullptr)
+    Refrigerator* refrigerator = get_tree()->get_root()->get_node<Refrigerator>(NodePath("Node2D/Refrigerator"));
+    if(refrigerator == nullptr)
     {
         return;
     }
 
-    TextureRect* slot = Object::cast_to<TextureRect>(inventory->get_child(inventory_slot_index)->get_child(0));
+    DishSlot* slot = refrigerator->get_dish_slot(inventory_slot_index);
 
     // swap dish within inventory if the slot is not empty
-    if(slot->get_texture() != nullptr)
+    if(slot->get_slot_texture() != nullptr)
     {
         // spawn a dish by an information of the slot
         Vector2 spawn_position = Vector2(get_global_position().x - (sprite->get_rect().get_size().x / 2) - (slot->get_rect().get_size().x / 2), get_global_position().y);
-        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(spawn_position, slot->get_texture());
+        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(spawn_position, slot->get_slot_texture());
     }
 
     // @@ TODO: Change how to send dish data.
-    slot->set_texture(texture);
+    slot->set_slot_texture(texture);
 
     queue_free();
 }

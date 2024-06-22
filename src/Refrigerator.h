@@ -54,6 +54,11 @@ public:
 	int32_t get_columns() const;
 	void set_columns(int32_t _columns);
 
+	int32_t get_dish_slots_count() const;
+	const DishSlot* get_dish_slot(int32_t index) const;
+	DishSlot* get_dish_slot(int32_t index);
+	
+
 private:
     void _on_texture_button_pressed();
 	bool slide_flag;

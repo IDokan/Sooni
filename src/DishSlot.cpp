@@ -67,7 +67,7 @@ void godot::DishSlot::set_slot_texture(const Ref<Texture> &_texture)
 Variant godot::DishSlot::_get_drag_data(const Vector2 &at_position)
 {
     DishContainers* dish_containers = get_node<DishContainers>("/root/Node2D/DishContainers");
-    if(dish_containers->is_any_dish_dragging())
+    if(dish_containers->is_any_dish_dragging() || get_slot_texture() == nullptr)
     {
         return Variant();
     }
