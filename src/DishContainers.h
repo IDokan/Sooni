@@ -36,6 +36,7 @@ public:
 
     void prepare_spawner(Ref<Texture2D> _texture, Vector2 _offset = Vector2());
     void set_target_slot(TextureRect* _target_slot);
+    void clean_up_spawner();
     void spawn_dish(Vector2 _position, Ref<Texture2D> _tex);
     // Does not care drag&drop logics, spawns a dish on the place.
     // Currently it is used by when swapped with inventory item

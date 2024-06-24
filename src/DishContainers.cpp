@@ -68,6 +68,13 @@ void godot::DishContainers::set_target_slot(TextureRect* _target_slot)
     will_spawn = true;
 }
 
+void godot::DishContainers::clean_up_spawner()
+{
+    offset = Vector2();
+    target_slot = nullptr;
+    will_spawn = false;
+}
+
 void godot::DishContainers::spawn_dish(Vector2 _position, Ref<Texture2D> _tex)
 {
     if(will_spawn == false)
@@ -92,6 +99,8 @@ void godot::DishContainers::spawn_dish(Vector2 _position, Ref<Texture2D> _tex)
     // @@ TODO: set_position? set_global_position?
     dish->set_position(_position + offset);
     add_child(dish);
+
+    clean_up_spawner();
 }
 
 void godot::DishContainers::force_spawn_dish(Vector2 _position, Ref<Texture2D> _tex)

@@ -138,4 +138,5 @@ void godot::DishSlot::_drop_data(const Vector2 &at_position, const Variant &data
         return; 
     }
     slot->set_texture(*dragged_texture);
+    get_node<DishContainers>("/root/Node2D/DishContainers")->clean_up_spawner();
 }
