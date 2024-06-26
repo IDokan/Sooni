@@ -64,6 +64,36 @@ void godot::DishSlot::set_slot_texture(const Ref<Texture> &_texture)
     slot->set_texture(_texture);
 }
 
+int32_t godot::DishSlot::get_nutrient_id() const
+{
+    return nutrient_id;
+}
+
+void godot::DishSlot::set_nutrient_id(int32_t _nutrient_id)
+{
+    nutrient_id = _nutrient_id;
+}
+
+int32_t godot::DishSlot::get_cooking_id() const
+{
+    return cooking_id;
+}
+
+void godot::DishSlot::set_cooking_id(int32_t _cooking_id)
+{
+    cooking_id = _cooking_id;
+}
+
+int32_t godot::DishSlot::get_additive_id() const
+{
+    return additive_id;
+}
+
+void godot::DishSlot::set_additive_id(int32_t _additive_id)
+{
+    additive_id = _additive_id;
+}
+
 Variant godot::DishSlot::_get_drag_data(const Vector2 &at_position)
 {
     DishContainers* dish_containers = get_node<DishContainers>("/root/Node2D/DishContainers");
@@ -75,6 +105,9 @@ Variant godot::DishSlot::_get_drag_data(const Vector2 &at_position)
     Dictionary data;
     data["slot"] = this;
     data["texture"] = slot->get_texture();
+    data["nutrient_id"] = nutrient_id;
+    data["cooking_id"] = cooking_id;
+    data["additive_id"] = additive_id;
 
     Vector2 offset = get_global_rect().get_center() - get_global_mouse_position();
 
@@ -91,7 +124,7 @@ Variant godot::DishSlot::_get_drag_data(const Vector2 &at_position)
         set_drag_preview(control);
     }
 
-    dish_containers->prepare_spawner(slot->get_texture(), offset);
+    dish_containers->prepare_spawner(slot->get_texture(), nutrient_id, cooking_id, additive_id, offset);
     slot->set_texture(nullptr);
 
     return data;
@@ -129,6 +162,9 @@ void godot::DishSlot::_drop_data(const Vector2 &at_position, const Variant &data
             return;
         }
         dragged_slot->set_slot_texture(slot->get_texture());
+        dragged_slot->set_nutrient_id(nutrient_id);
+        dragged_slot->set_cooking_id(cooking_id);
+        dragged_slot->set_additive_id(additive_id);
     }
 
     Ref<Texture2D>dragged_texture = (Ref<Texture2D>)(dictionary["texture"]);
@@ -138,5 +174,8 @@ void godot::DishSlot::_drop_data(const Vector2 &at_position, const Variant &data
         return; 
     }
     slot->set_texture(*dragged_texture);
+    nutrient_id = dictionary["nutrient_id"];
+    cooking_id = dictionary["cooking_id"];
+    additive_id = dictionary["additive_id"];
     get_node<DishContainers>("/root/Node2D/DishContainers")->clean_up_spawner();
 }

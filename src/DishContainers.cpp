@@ -56,9 +56,12 @@ void godot::DishContainers::_input(Ref<InputEvent> event)
     }
 }
 
-void godot::DishContainers::prepare_spawner(Ref<Texture2D> _texture, Vector2 _offset)
+void godot::DishContainers::prepare_spawner(Ref<Texture2D> _texture, int32_t _nutrient_id, int32_t _cooking_id, int32_t _additive_id, Vector2 _offset)
 {
     texture = _texture;
+    nutrient_id = _nutrient_id;
+    cooking_id = _cooking_id;
+    additive_id = _additive_id;
     offset = _offset;
 }
 
@@ -98,16 +101,22 @@ void godot::DishContainers::spawn_dish(Vector2 _position, Ref<Texture2D> _tex)
     dish->set_texture(_tex);
     // @@ TODO: set_position? set_global_position?
     dish->set_position(_position + offset);
+    dish->set_nutrient_id(nutrient_id);
+    dish->set_cooking_id(cooking_id);
+    dish->set_additive_id(additive_id);
     add_child(dish);
 
     clean_up_spawner();
 }
 
-void godot::DishContainers::force_spawn_dish(Vector2 _position, Ref<Texture2D> _tex)
+void godot::DishContainers::force_spawn_dish(Vector2 _position, int32_t _nutrient_id, int32_t _cooking_id, int32_t _additive_id, Ref<Texture2D> _tex)
 {
     Dish* dish = memnew(Dish);
     dish->set_texture(_tex);
     dish->set_position(_position);
+    dish->set_nutrient_id(_nutrient_id);
+    dish->set_cooking_id(_cooking_id);
+    dish->set_additive_id(_additive_id);
     add_child(dish);
 }
 

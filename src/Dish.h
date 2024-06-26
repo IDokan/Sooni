@@ -48,6 +48,15 @@ public:
 
 	bool is_dragging() const;
 
+	int32_t get_nutrient_id() const;
+	void set_nutrient_id(int32_t _nutrient_id);
+
+	int32_t get_cooking_id() const;
+	void set_cooking_id(int32_t _cooking_id);
+
+	int32_t get_additive_id() const;
+	void set_additive_id(int32_t _additive_id);
+
 private:
 	int32_t get_item_slot_index_on(Vector2 mouse_position);
 	void store_to_inventory(Vector2 mouse_position, int32_t inventory_slot_index);
@@ -60,6 +69,11 @@ private:
 
 	Vector2 offset;
 	bool dragging;
+	
+
+	int32_t nutrient_id;
+	int32_t cooking_id;
+	int32_t additive_id;
 };
 
 }

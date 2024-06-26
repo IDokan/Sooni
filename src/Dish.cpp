@@ -36,7 +36,9 @@ void Dish::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_texture"), &Dish::get_texture);
     ClassDB::add_property("Dish", PropertyInfo(Variant::OBJECT, "texture", PROPERTY_HINT_RESOURCE_TYPE, "Texture2D"), "set_texture", "get_texture");
 
-    
+    ClassDB::bind_method(D_METHOD("set_nutrient_id", "_nutrient_id"), &Dish::set_nutrient_id);
+    ClassDB::bind_method(D_METHOD("get_nutrient_id"), &Dish::get_nutrient_id);
+    ClassDB::add_property("Dish", PropertyInfo(Variant::INT, "Nutrient ID"), "set_nutrient_id", "get_nutrient_id");
 }
 
 Dish::Dish() 
@@ -146,6 +148,36 @@ bool godot::Dish::is_dragging() const
     return dragging;
 }
 
+int32_t godot::Dish::get_nutrient_id() const
+{
+    return nutrient_id;
+}
+
+void godot::Dish::set_nutrient_id(int32_t _nutrient_id)
+{
+    nutrient_id = _nutrient_id;
+}
+
+int32_t godot::Dish::get_cooking_id() const
+{
+    return cooking_id;
+}
+
+void godot::Dish::set_cooking_id(int32_t _cooking_id)
+{
+    cooking_id = _cooking_id;
+}
+
+int32_t godot::Dish::get_additive_id() const
+{
+    return additive_id;
+}
+
+void godot::Dish::set_additive_id(int32_t _additive_id)
+{
+    additive_id = _additive_id;
+}
+
 int32_t godot::Dish::get_item_slot_index_on(Vector2 mouse_position)
 {
     // @@ TODO: Could be better approach to find the refrigerator pointer
@@ -194,11 +226,14 @@ void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_s
     {
         // spawn a dish by an information of the slot
         Vector2 spawn_position = Vector2(get_global_position().x - (sprite->get_rect().get_size().x / 2) - (slot->get_rect().get_size().x / 2), get_global_position().y);
-        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(spawn_position, slot->get_slot_texture());
+        get_node<DishContainers>(NodePath("/root/Node2D/DishContainers"))->force_spawn_dish(spawn_position, slot->get_nutrient_id(), slot->get_cooking_id(), slot->get_additive_id(), slot->get_slot_texture());
     }
 
     // @@ TODO: Change how to send dish data.
     slot->set_slot_texture(texture);
+    slot->set_nutrient_id(nutrient_id);
+    slot->set_cooking_id(cooking_id);
+    slot->set_additive_id(additive_id);
 
     queue_free();
 }

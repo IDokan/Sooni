@@ -32,6 +32,15 @@ public:
     void set_background_texture(const Ref<Texture>& _texture);
     Ref<Texture> get_slot_texture() const;
     void set_slot_texture(const Ref<Texture>& _texture);
+
+	int32_t get_nutrient_id() const;
+	void set_nutrient_id(int32_t _nutrient_id);
+
+	int32_t get_cooking_id() const;
+	void set_cooking_id(int32_t _cooking_id);
+
+	int32_t get_additive_id() const;
+	void set_additive_id(int32_t _additive_id);
     
     
 	Variant _get_drag_data(const Vector2 &at_position) override;
@@ -41,6 +50,10 @@ public:
 private:
     TextureRect* slot;
     Ref<Texture> background_texture;
+
+	int32_t nutrient_id;
+	int32_t cooking_id;
+	int32_t additive_id;
 };
 
 }
