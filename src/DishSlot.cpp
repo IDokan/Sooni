@@ -10,6 +10,8 @@ Creation Date: 06.18.2024
 
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 
 #include "DishContainers.h"
 
@@ -178,4 +180,14 @@ void godot::DishSlot::_drop_data(const Vector2 &at_position, const Variant &data
     cooking_id = dictionary["cooking_id"];
     additive_id = dictionary["additive_id"];
     get_node<DishContainers>("/root/Node2D/DishContainers")->clean_up_spawner();
+}
+
+void godot::DishSlot::tween_slot(double _rotation)
+{
+    slot->set_rotation(_rotation);
+    slot->set_pivot_offset(slot->get_texture()->get_size() / 2);
+
+    Ref<Tween> t = create_tween();
+    t->tween_property(slot, "rotation", 0, 0.5);
+    t->play();
 }

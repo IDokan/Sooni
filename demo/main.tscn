@@ -8,19 +8,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ugot"]
 size = Vector2(325, 600)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dm0jo"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1larw"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dwd5u"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ruq52"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_duq3r"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yckn7"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3jyh"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ayyju"]
 bounce = 0.5
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tbxjk"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hm854"]
 bounce = 0.5
 
 [node name="Node2D" type="Node2D"]
@@ -89,32 +89,32 @@ shape = SubResource("RectangleShape2D_5ugot")
 texture = ExtResource("1_j8afg")
 "Nutrient ID" = 1
 position = Vector2(1011, 546)
-physics_material_override = SubResource("PhysicsMaterial_dm0jo")
+physics_material_override = SubResource("PhysicsMaterial_1larw")
 
 [node name="Dish2" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 "Nutrient ID" = 2
 z_as_relative = false
 position = Vector2(865, 566)
-physics_material_override = SubResource("PhysicsMaterial_dwd5u")
+physics_material_override = SubResource("PhysicsMaterial_ruq52")
 
 [node name="Dish3" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 "Nutrient ID" = 3
 z_as_relative = false
 position = Vector2(259, 395)
-physics_material_override = SubResource("PhysicsMaterial_duq3r")
+physics_material_override = SubResource("PhysicsMaterial_yckn7")
 
 [node name="Dish4" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 "Nutrient ID" = 4
 z_as_relative = false
 position = Vector2(83, 415)
-physics_material_override = SubResource("PhysicsMaterial_p3jyh")
+physics_material_override = SubResource("PhysicsMaterial_ayyju")
 
 [node name="Dish5" type="Dish" parent="DishContainers"]
 texture = ExtResource("1_j8afg")
 "Nutrient ID" = 5
 z_as_relative = false
 position = Vector2(466, 366)
-physics_material_override = SubResource("PhysicsMaterial_tbxjk")
+physics_material_override = SubResource("PhysicsMaterial_hm854")

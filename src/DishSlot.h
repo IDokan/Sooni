@@ -28,6 +28,7 @@ public:
 	void _ready();
 	void _process(double delta) override;
 
+	// Getters & Setters
     Ref<Texture> get_background_texture() const;
     void set_background_texture(const Ref<Texture>& _texture);
     Ref<Texture> get_slot_texture() const;
@@ -42,11 +43,14 @@ public:
 	int32_t get_additive_id() const;
 	void set_additive_id(int32_t _additive_id);
     
-    
+    // Drag & Drop interfaces
 	Variant _get_drag_data(const Vector2 &at_position) override;
 	bool _can_drop_data(const Vector2 &at_position, const Variant &data) const override;
 	void _drop_data(const Vector2 &at_position, const Variant &data) override;
 
+
+
+	void tween_slot(double _rotation);
 private:
     TextureRect* slot;
     Ref<Texture> background_texture;

@@ -235,5 +235,7 @@ void godot::Dish::store_to_inventory(Vector2 mouse_position, int32_t inventory_s
     slot->set_cooking_id(cooking_id);
     slot->set_additive_id(additive_id);
 
+    slot->tween_slot(get_rotation());    
+
     queue_free();
 }
