@@ -1,0 +1,22 @@
+FutureFeatures
+
+Cooking
+    Ingredients, cooking method, condiments determined how nutrition factors are there.
+    Each of them are unique and given by me.
+        - The way they got them is not yet determined. Should they purchasable or provided without cost?
+    However, dishes are procedurally generated depends on combinations.
+
+Kitchen
+    The place where dishes are cooked.
+    There are three sections. An ingredients container, stove, and a condiments container.
+
+Delivery
+    Users may requests delivery by apps.
+    Chicken, bread, chicken stew...
+
+Diet journal
+    It consists of where, when, what, how, and what type of exercise you did.
+    In program, it is recorded automatically.
+
+Sooni
+    She has a lot of factors. 체중, 골밀도, 혈당, 
