@@ -5,7 +5,31 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Stove" type="Node2D" parent="."]
-position = Vector2(419, 219)
+position = Vector2(547, 284)
 
 [node name="Sprite2D" type="Sprite2D" parent="Stove"]
 texture = ExtResource("1_u2vkn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 106.0
+offset_top = 217.0
+offset_right = 234.0
+offset_bottom = 345.0
+texture_normal = ExtResource("1_u2vkn")
+texture_pressed = ExtResource("1_u2vkn")
+texture_hover = ExtResource("1_u2vkn")
+texture_disabled = ExtResource("1_u2vkn")
+texture_focused = ExtResource("1_u2vkn")
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer"]
+offset_left = 901.0
+offset_top = 212.0
+offset_right = 1029.0
+offset_bottom = 340.0
+texture_normal = ExtResource("1_u2vkn")
+texture_pressed = ExtResource("1_u2vkn")
+texture_hover = ExtResource("1_u2vkn")
+texture_disabled = ExtResource("1_u2vkn")
+texture_focused = ExtResource("1_u2vkn")
