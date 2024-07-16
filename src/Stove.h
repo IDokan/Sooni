@@ -15,6 +15,21 @@ Creation Date: 7.4.2024
 
 namespace godot {
 
+enum CookingMethods
+{
+	Boiling = 0,
+	Poaching,
+	Steaming,
+	Brasing,
+	Frying,
+	Roasting,
+	Sauteing,	// Pronounce -> sa-u-tei :: səʊteɪ
+	Blanching,
+	// Where are grilling, 
+};
+
+class Texture2DArray;
+
 class Stove : public Node2D {
 	GDCLASS(Stove, Node2D)
 
@@ -28,8 +43,11 @@ public:
 	void _ready();
 	void _process(double delta) override;
 
+	Ref<Texture2DArray> get_images() const;
+	void set_images(const Ref<Texture2DArray>& images);
+
 private:
-	
+	Ref<Texture2DArray> images;
 };
 
 }
