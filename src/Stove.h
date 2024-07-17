@@ -48,6 +48,7 @@ public:
 
 private:
 	Ref<Texture2DArray> images;
+	CookingMethods cookingMethod;
 };
 
 }
