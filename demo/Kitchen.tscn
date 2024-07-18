@@ -35,3 +35,7 @@ texture_disabled = ExtResource("1_u2vkn")
 texture_focused = ExtResource("1_u2vkn")
 
 [node name="Stove" type="Stove" parent="CanvasLayer/TextureButton2"]
+
+[node name="StoveButtons" type="StoveButtons" parent="."]
+texture_right = ExtResource("1_u2vkn")
+texture_left = ExtResource("1_u2vkn")
