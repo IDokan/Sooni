@@ -9,6 +9,8 @@ Cooking
 Kitchen
     The place where dishes are cooked.
     There are three sections. An ingredients container, stove, and a condiments container.
+	Currently working on Stove. It used to cook a cuisine with ingredients container.
+	A condiments container used after cooking(Ingredients + Stove) is done.
 
 Delivery
     Users may requests delivery by apps.
